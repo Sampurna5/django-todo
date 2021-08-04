@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-4 offset-4" style="text-align: right;">
+        <div style="position: absolute;">
+            <p style="font-family: calibri; font-weight: bold; font-size: 24px">
+                {% if request.user.is_authenticated %}
+                Hello, {{request.user.username}}
+                {% else %}
+                Hello anonymous user
+                {% endif %}
+            </p>
+        </div>
+        <div>
+        <a href="/create" class="btn btn-success" title="Add a Todo"><i class="fas fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="col-4 offset-4">
+    {% for todo in todo_list %}
+        <div class="card mt-3">
+            <div class="card-header" style="text-align: right;">
+                <div style="position: absolute;">
+                <a href="/{{ todo.id }}/details/"><h5>{{todo.name}}</h5></a>
+                </div>
+            <div>
+                <a href="/{{ todo.id }}/update" class="btn btn-success" title="Update"><i class="far fa-edit"></i></a>
+                <a href="/{{ todo.id }}/delete" class="btn btn-danger" title="Delete"><i class="far fa-trash-alt"></i></a>
+            </div>
+            </div>
+            <div class="card-body">
+                <p>Due date: {{todo.due_date}}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

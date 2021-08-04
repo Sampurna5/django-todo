@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-4 offset-4">
+        <h4>Create a Todo</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+    <!--        <input type="text" name="name">-->
+    <!--        <input type="text" name="due_date">-->
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

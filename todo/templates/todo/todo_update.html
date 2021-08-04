@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="col-4 offset-4">
+        <h4>Update Todo</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary">Update</button>
+        </form>
+    </div>
+
+{% endblock %}
